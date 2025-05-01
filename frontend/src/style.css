@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *)){}
+
+html {
+    scroll-padding-top: 5rem;
+}
+
+.link-default {
+    @apply text-blue-500 hover:underline dark:text-blue-400;
+}
+
+.nav-link {
+    @apply hover:text-blue-500 dark:hover:text-blue-400;
+}
+
+.card {
+    @apply bg-white p-4 rounded-lg shadow hover:shadow-md transition hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:shadow-lg;
+}
+
+.section-header {
+    @apply text-2xl font-semibold border-b-2 border-blue-300 pb-1 mb-3 dark:border-blue-500;
+}
+
+.subtitle {
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+.skill-badge {
+    @apply bg-white px-4 py-2 rounded-full shadow text-center dark:bg-gray-800 dark:shadow-lg;
+}
