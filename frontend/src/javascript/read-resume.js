@@ -54,8 +54,23 @@ async function loadResume() {
     document.getElementById('projects-content').innerHTML += proj;
 
     // Skills
-    const skills = data.skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('');
-    document.getElementById('skills-content').innerHTML += `${skills}`;
+    const skillsContent = data.skills.map(section => {
+        const heading = section.name;
+        const skillBadges = section.skills.map(skill =>
+            `<span class="skill-badge">${skill}</span>`
+        ).join('');
+
+        return `
+    <div>
+      <h3 class="text-lg font-semibold mb-2">${heading}</h3>
+      <div class="flex flex-wrap gap-2">
+        ${skillBadges}
+      </div>
+    </div>
+  `;
+    }).join('');
+
+    document.getElementById('skills-content').innerHTML = skillsContent;
 }
 
 document.addEventListener('DOMContentLoaded', loadResume);

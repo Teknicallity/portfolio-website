@@ -36,33 +36,67 @@
   ],
   "projects": [
     {
-      "title": "Unraid Plugin: Hello World",
-      "github": "https://github.com/yourusername/unraid-hello-world",
-      "description": "A basic Unraid plugin built to explore the Unraid plugin system. Provides a simple UI panel and logs a message on install."
+      "title": "Tubarr: Video Archiver",
+      "github": "https://github.com/Teknicallity/tubarr",
+      "demo": "https://tubarrdemo.cacaw.group/",
+      "description": "A self-hosted Django app that archives YouTube videos and playlists locally with metadata and web-based browsing."
     },
     {
-      "title": "YouTube Archiver",
-      "github": "https://github.com/yourusername/youtube-archiver",
-      "demo": "https://demo.example.com/youtube-archiver",
-      "description": "A self-hosted Django app that archives YouTube videos locally with metadata and web-based browsing."
+      "title": "LC Mod Utility",
+      "github": "https://github.com/Teknicallity/LC-ModUtility",
+      "description": "A CLI tool for managing Lethal Company mods, allowing users to update mods, unzip mod packs, create new modpacks, and install mods from ThunderStore with ease."
     },
     {
       "title": "Inventory Management System",
-      "github": "https://github.com/yourusername/unraid-hello-world",
+      "github": "https://github.com/Teknicallity/Comp405-Inventory",
+      "demo": "https://comp405.cacaw.group/",
       "description": "A web-based system for tracking workshop tools and checkouts using Django and QR codes."
-    },
-    {
-      "title": "Buddy Backup for Unraid",
-      "github": "https://github.com/yourusername/unraid-hello-world",
-      "description": "A distributed backup system designed for Unraid where each server only has access to its designated folder on another trusted server. Ensures clear separation of access and mutual backups."
     }
   ],
   "skills": [
-    "Python",
-    "Django",
-    "Tailwind CSS",
-    "JavaScript",
-    "Docker",
-    "Git/GitHub"
+    {
+      "name": "Languages",
+      "skills": [
+        "Python",
+        "Golang",
+        "Java",
+        "SQLite",
+        "MySQL",
+        "JavaScript",
+        "HTML/CSS",
+        "R",
+        "Bash"
+      ]
+    },
+    {
+      "name": "Frameworks",
+      "skills": [
+        "Flask",
+        "Django",
+        "Bootstrap"
+      ]
+    },
+    {
+      "name": "Developer Tools",
+      "skills": [
+        "Git",
+        "Docker",
+        "VS Code",
+        "PyCharm",
+        "IntelliJ",
+        "GoLand"
+      ]
+    },
+    {
+      "name": "Cloud & Architecture",
+      "skills": [
+        "AWS S3",
+        "IAM",
+        "VPC",
+        "CloudWatch",
+        "Solution Architecture",
+        "High Availability"
+      ]
+    }
   ]
 }
