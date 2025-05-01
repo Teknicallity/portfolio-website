@@ -4,23 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio & Resume</title>
-    <script defer>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-nav');
-            menu.classList.toggle('hidden');
-        }
 
-        // Close mobile nav when a link is clicked
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileLinks = document.querySelectorAll('#mobile-nav .nav-link');
-            const menu = document.getElementById('mobile-nav');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                });
-            });
-        });
-    </script>
     <script src="src/javascript/preload.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="src/style.css">
@@ -115,6 +99,7 @@
     </section>
 </div>
 
+<script src="src/javascript/navbar.js"></script>
 <script src="src/javascript/read-resume.js"></script>
 <script src="src/javascript/dark-mode.js"></script>
 </body>
