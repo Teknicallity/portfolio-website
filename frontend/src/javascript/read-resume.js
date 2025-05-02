@@ -4,7 +4,7 @@ async function loadResume() {
 
     // Education
     const edu = data.education.map(e =>
-        `<div class="flex justify-between flex-col sm:flex-row mb-3">
+        `<div class="card mb-4 flex justify-between flex-col sm:flex-row">
       <div>
         <h3 class="text-lg font-semibold">${e.degree}</h3>
         <p class="subtitle">${e.school}</p>
@@ -18,14 +18,14 @@ async function loadResume() {
 
     // Certifications
     const certs = data.certifications.map(c =>
-        `<li class="flex justify-between flex-col sm:flex-row mb-2">
+        `<div class="card mb-4 flex justify-between flex-col sm:flex-row">
       <span>
         <a href="${c.url}" target="_blank" class="hover:underline inline-flex items-center gap-1">
           ${c.title} <i class="fas fa-external-link-alt text-sm"></i>
         </a>
       </span>
       <span class="subtitle">${c.year}</span>
-    </li>`).join('');
+    </div>`).join('');
     document.getElementById('certifications-content').innerHTML += `<ul>${certs}</ul>`;
 
     // Experience
