@@ -13,7 +13,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   comment             = "Some comment"
 
-  # aliases = [var.domain_name]
+  aliases = ["${var.subdomain}.${var.domain}"]
   default_root_object = "index.html"
 
   default_cache_behavior {
@@ -47,9 +47,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
-    # minimum_protocol_version = "TLSv1.2_2021"
-    # acm_certificate_arn = ""
+    cloudfront_default_certificate = false
+    minimum_protocol_version = "TLSv1.2_2021"
+    acm_certificate_arn = aws_acm_certificate.ssl_cert.arn
+    ssl_support_method = "sni-only"
   }
 }
 

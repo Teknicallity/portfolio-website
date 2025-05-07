@@ -1,10 +1,14 @@
-variable "bucket_name" {
+variable "aws_access_key_id" {
   type = string
-  description = "Name of the bucket."
+}
+variable "aws_secret_access_key" {
+  type = string
 }
 variable "cloudflare_api_token" {
   type = string
-  description = "Cloudflare account api token"
+}
+variable "bucket_name" {
+  type = string
 }
 variable "zone_id" {
   type = string
