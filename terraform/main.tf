@@ -15,6 +15,9 @@ provider "aws" {
 
 module "backend" {
   source = "./modules/backend"
+  api_gateway_name = var.api_gateway_name
+  db_table_name = var.db_table_name
+  domain = var.domain
 }
 
 module "frontend" {
