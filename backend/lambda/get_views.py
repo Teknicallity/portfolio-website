@@ -1,10 +1,10 @@
 import json
 import boto3
 import datetime
+import os
 from botocore.exceptions import ClientError
 
-
-table_name = 'PortfolioViews'
+table_name = os.environ.get('TABLE_NAME', 'PortfolioViews')
 views_table = boto3.resource('dynamodb').Table(table_name)
 
 def lambda_handler(event, context):
