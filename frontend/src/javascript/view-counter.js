@@ -1,6 +1,6 @@
 
 async function getViewCount() {
-    const url = 'https://85o0jrs2z0.execute-api.us-east-1.amazonaws.com/prod/incrementViews';
+    const url = window.AppConfig.apiUrl;
     const viewDiv = document.getElementById('view-counter');
 
     try {
