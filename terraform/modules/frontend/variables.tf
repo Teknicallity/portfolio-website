@@ -18,3 +18,6 @@ variable "subdomain" {
 variable "domain" {
   type = string
 }
+variable "increment_api_url" {
+  type = string
+}

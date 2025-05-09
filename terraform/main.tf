@@ -17,6 +17,7 @@ module "backend" {
   source = "./modules/backend"
   api_gateway_name = var.api_gateway_name
   db_table_name = var.db_table_name
+  subdomain = var.subdomain
   domain = var.domain
 }
 
@@ -28,4 +29,5 @@ module "frontend" {
   cloudflare_api_token = var.cloudflare_api_token
   account_id = var.account_id
   zone_id = var.zone_id
+  increment_api_url = module.backend.api_gateway_increment_views_url
 }

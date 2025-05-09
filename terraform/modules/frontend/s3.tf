@@ -61,3 +61,18 @@ resource "aws_s3_object" "static_files" {
   content_type    = lookup(local.mime_types, split(".", each.value)[length(split(".", each.value)) - 1], "binary/octet-stream")
   etag            = filemd5("${path.root}/../frontend/dist/${each.value}")
 }
+
+
+data "template_file" "config_js" {
+  template = file("${path.module}/config.js.tpl")
+  vars = {
+    api_url = var.increment_api_url
+  }
+}
+
+resource "aws_s3_object" "config_js" {
+  bucket = aws_s3_bucket.website_bucket.id
+  key    = "config.js"
+  content = data.template_file.config_js.rendered
+  content_type = "application/javascript"
+}
