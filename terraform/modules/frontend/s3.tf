@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.bucket_name
+  bucket = "${var.bucket_name}${var.subdomain}"
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket_acl_ownership" {

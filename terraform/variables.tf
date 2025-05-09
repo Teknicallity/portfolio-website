@@ -7,9 +7,6 @@ variable "aws_secret_access_key" {
 variable "cloudflare_api_token" {
   type = string
 }
-variable "bucket_name" {
-  type = string
-}
 variable "zone_id" {
   type = string
 }
@@ -20,11 +17,5 @@ variable "subdomain" {
   type = string
 }
 variable "domain" {
-  type = string
-}
-variable "db_table_name" {
-  type = string
-}
-variable "api_gateway_name" {
   type = string
 }

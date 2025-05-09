@@ -10,7 +10,7 @@ data "archive_file" "increment_views_zip" {
 }
 
 resource "aws_lambda_function" "get_views" {
-  function_name = "getViewsFunctionTf"
+  function_name = "getViewsFunctionTf${var.subdomain}"
   handler       = "get_views.lambda_handler"
   runtime       = "python3.13"
   role          = aws_iam_role.lambda_exec.arn
@@ -18,13 +18,13 @@ resource "aws_lambda_function" "get_views" {
 
   environment {
     variables = {
-      TABLE_NAME = var.db_table_name
+      TABLE_NAME = aws_dynamodb_table.visitor_count.name
     }
   }
 }
 
 resource "aws_lambda_function" "increment_views" {
-  function_name = "incrementViewsFunctionTf"
+  function_name = "incrementViewsFunctionTf${var.subdomain}"
   handler       = "increment_views.lambda_handler"
   runtime       = "python3.13"
   role          = aws_iam_role.lambda_exec.arn
@@ -32,13 +32,13 @@ resource "aws_lambda_function" "increment_views" {
 
   environment {
     variables = {
-      TABLE_NAME = var.db_table_name
+      TABLE_NAME = aws_dynamodb_table.visitor_count.name
     }
   }
 }
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_exec_role"
+  name = "lambda_exec_role_${var.subdomain}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -53,7 +53,7 @@ resource "aws_iam_role" "lambda_exec" {
 }
 
 resource "aws_iam_policy" "lambda_dynamodb_access" {
-  name = "LambdaDynamoDBAccessPolicy"
+  name = "LambdaDynamoDBAccessPolicy${var.subdomain}"
 
   policy = jsonencode({
     Version = "2012-10-17",

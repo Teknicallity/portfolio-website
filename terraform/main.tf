@@ -15,15 +15,12 @@ provider "aws" {
 
 module "backend" {
   source = "./modules/backend"
-  api_gateway_name = var.api_gateway_name
-  db_table_name = var.db_table_name
   subdomain = var.subdomain
   domain = var.domain
 }
 
 module "frontend" {
   source      = "./modules/frontend"
-  bucket_name = var.bucket_name
   subdomain = var.subdomain
   domain = var.domain
   cloudflare_api_token = var.cloudflare_api_token

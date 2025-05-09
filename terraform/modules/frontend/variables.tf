@@ -1,6 +1,7 @@
 variable "bucket_name" {
   type = string
   description = "Name of the bucket."
+  default = "sheputa-portfolio-dev-website-tf"
 }
 variable "cloudflare_api_token" {
   type = string
