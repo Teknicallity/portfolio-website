@@ -7,4 +7,8 @@ resource "aws_dynamodb_table" "visitor_count" {
     name = "PageId"
     type = "S"
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
