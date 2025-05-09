@@ -59,7 +59,7 @@ resource "aws_api_gateway_integration_response" "get_views_get_response" {
   status_code = "200"
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'https://*.${var.domain}'"
+    "method.response.header.Access-Control-Allow-Origin" = "'https://${var.subdomain}.${var.domain}'"
   }
 
   response_templates = {
@@ -68,6 +68,11 @@ resource "aws_api_gateway_integration_response" "get_views_get_response" {
 }
 
 resource "aws_lambda_permission" "get_views_api" {
+  depends_on = [
+    aws_api_gateway_method.get_views_get,
+    aws_api_gateway_integration.get_views_lambda
+  ]
+
   statement_id  = "AllowAPIGatewayInvokeGetViews"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.get_views.function_name
@@ -121,7 +126,7 @@ resource "aws_api_gateway_integration_response" "increment_views_post_response" 
   status_code = "200"
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = "'https://*.${var.domain}'"
+    "method.response.header.Access-Control-Allow-Origin" = "'https://${var.subdomain}.${var.domain}'"
   }
 
   response_templates = {
@@ -177,7 +182,7 @@ resource "aws_api_gateway_integration_response" "increment_views_options_respons
   status_code = "200"
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'https://*.${var.domain}'",
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://${var.subdomain}.${var.domain}'",
     "method.response.header.Access-Control-Allow-Methods" = "'POST,OPTIONS'",
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
   }
@@ -188,6 +193,11 @@ resource "aws_api_gateway_integration_response" "increment_views_options_respons
 }
 
 resource "aws_lambda_permission" "increment_views_api" {
+  depends_on = [
+    aws_api_gateway_method.increment_views_post,
+    aws_api_gateway_integration.increment_views_lambda
+  ]
+
   statement_id  = "AllowAPIGatewayInvokeIncrementViews"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.increment_views.function_name
@@ -200,18 +210,40 @@ resource "aws_lambda_permission" "increment_views_api" {
 # ---------------------------
 resource "aws_api_gateway_deployment" "view_api_deployment" {
   depends_on = [
+    aws_api_gateway_method.get_views_get,
     aws_api_gateway_integration.get_views_lambda,
+    aws_api_gateway_method.increment_views_post,
     aws_api_gateway_integration.increment_views_lambda,
-    aws_api_gateway_integration.increment_views_options_mock
+    aws_api_gateway_method.increment_views_options,
+    aws_api_gateway_integration.increment_views_options_mock,
+    aws_api_gateway_gateway_response.cors_4xx,
+    aws_api_gateway_gateway_response.cors_5xx
   ]
 
   rest_api_id = aws_api_gateway_rest_api.view_api.id
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  # Forces a new deployment on config change
+  triggers = {
+    redeploy_hash = sha1(join("", [
+      jsonencode(aws_api_gateway_integration_response.get_views_get_response.response_parameters),
+      jsonencode(aws_api_gateway_integration_response.increment_views_post_response.response_parameters),
+      jsonencode(aws_api_gateway_gateway_response.cors_4xx.response_parameters),
+      jsonencode(aws_api_gateway_gateway_response.cors_5xx.response_parameters)
+    ]))
+  }
 }
 
 resource "aws_api_gateway_stage" "prod" {
+  depends_on = [aws_api_gateway_deployment.view_api_deployment]
   deployment_id = aws_api_gateway_deployment.view_api_deployment.id
   rest_api_id   = aws_api_gateway_rest_api.view_api.id
   stage_name    = "prod"
 
-  variables = {}
+  lifecycle {
+    prevent_destroy = false
+  }
 }
