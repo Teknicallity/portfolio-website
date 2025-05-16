@@ -35,7 +35,7 @@ resource "cloudflare_dns_record" "ssl_cert_validation" {
 resource "cloudflare_dns_record" "subdomain_cname" {
   comment = "CloudFront alias terraform"
   zone_id = var.zone_id
-  name    = var.subdomain
+  name    = "${var.subdomain}.${var.domain}"
   content = aws_cloudfront_distribution.s3_distribution.domain_name
   type    = "CNAME"
   proxied = false
