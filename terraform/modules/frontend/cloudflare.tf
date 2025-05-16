@@ -30,6 +30,15 @@ resource "cloudflare_dns_record" "ssl_cert_validation" {
   content = each.value.value
   proxied = false
   ttl     = 60
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy       = true
+    ignore_changes        = [
+      ttl,
+      proxied
+    ]
+  }
 }
 
 resource "cloudflare_dns_record" "subdomain_cname" {
