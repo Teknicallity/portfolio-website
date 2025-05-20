@@ -55,8 +55,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 }
 
 resource "aws_cloudfront_origin_access_control" "oac" {
-  name                              = "my-oac"
-  description                       = "Access S3 from CloudFront"
+  name                              = "S3-OAC-${var.subdomain}-TF"
+  description                       = "Access S3 from CloudFront Created from terraform"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

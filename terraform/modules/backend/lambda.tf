@@ -53,7 +53,7 @@ resource "aws_iam_role" "lambda_exec" {
 }
 
 resource "aws_iam_policy" "lambda_dynamodb_access" {
-  name = "LambdaDynamoDBAccessPolicy${var.subdomain}"
+  name = "LambdaDynamoDBAccessPolicy${var.subdomain}TF"
 
   policy = jsonencode({
     Version = "2012-10-17",
