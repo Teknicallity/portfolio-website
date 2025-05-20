@@ -9,6 +9,6 @@ resource "aws_dynamodb_table" "visitor_count" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }

@@ -15,6 +15,6 @@ resource "aws_acm_certificate" "ssl_cert" {
 
   lifecycle {
     create_before_destroy = true
-    prevent_destroy       = true
+    prevent_destroy       = false
   }
 }

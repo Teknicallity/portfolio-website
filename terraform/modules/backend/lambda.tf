@@ -1,11 +1,11 @@
 data "archive_file" "get_views_zip" {
   type = "zip"
-  source_file = "${path.root}/../backend/lambda/get_views.py"
+  source_file = "${path.root}/../../backend/lambda/get_views.py"
   output_path = "${path.root}/build/get_views_function.zip"
 }
 data "archive_file" "increment_views_zip" {
   type = "zip"
-  source_file = "${path.root}/../backend/lambda/increment_views.py"
+  source_file = "${path.root}/../../backend/lambda/increment_views.py"
   output_path = "${path.root}/build/increment_views.zip"
 }
 

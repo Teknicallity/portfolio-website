@@ -54,12 +54,12 @@ locals {
 }
 
 resource "aws_s3_object" "static_files" {
-  for_each        = fileset("${path.root}/../frontend/dist/", "**")
+  for_each        = fileset("${path.root}/../../frontend/dist/", "**")
   bucket          = aws_s3_bucket.website_bucket.id
   key             = each.value
-  source          = "${path.root}/../frontend/dist/${each.value}"
+  source          = "${path.root}/../../frontend/dist/${each.value}"
   content_type    = lookup(local.mime_types, split(".", each.value)[length(split(".", each.value)) - 1], "binary/octet-stream")
-  etag            = filemd5("${path.root}/../frontend/dist/${each.value}")
+  etag            = filemd5("${path.root}/../../frontend/dist/${each.value}")
 }
 
 

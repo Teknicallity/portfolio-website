@@ -23,7 +23,7 @@ resource "cloudflare_dns_record" "ssl_cert_validation" {
     }
   }
 
-  comment = "ACM validation from terraform"
+  comment = "ACM validation for ${var.subdomain} from terraform"
   zone_id = var.zone_id
   name    = each.value.name
   type    = each.value.type
@@ -33,7 +33,7 @@ resource "cloudflare_dns_record" "ssl_cert_validation" {
 
   lifecycle {
     create_before_destroy = true
-    prevent_destroy       = true
+    prevent_destroy       = false
     ignore_changes        = [
       ttl,
       proxied
@@ -42,7 +42,7 @@ resource "cloudflare_dns_record" "ssl_cert_validation" {
 }
 
 resource "cloudflare_dns_record" "subdomain_cname" {
-  comment = "CloudFront alias terraform"
+  comment = "CloudFront alias from terraform"
   zone_id = var.zone_id
   name    = "${var.subdomain}.${var.domain}"
   content = aws_cloudfront_distribution.s3_distribution.domain_name
