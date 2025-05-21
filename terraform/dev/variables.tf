@@ -1,10 +1,10 @@
-variable "aws_access_key_id" {
-  type = string
-}
-variable "aws_secret_access_key" {
-  type = string
-}
-variable "CLOUDFLARE_API_TOKEN" {
+# variable "aws_access_key_id" {
+#   type = string
+# }
+# variable "aws_secret_access_key" {
+#   type = string
+# }
+variable "cloudflare_api_token" {
   type = string
 }
 variable "zone_id" {

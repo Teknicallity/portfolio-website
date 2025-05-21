@@ -18,8 +18,8 @@ terraform {
 
 provider "aws" {
   region = "us-east-1"
-  access_key = var.aws_access_key_id
-  secret_key = var.aws_secret_access_key
+  # access_key = var.aws_access_key_id
+  # secret_key = var.aws_secret_access_key
   # profile = "terraform-dev"
 }
 
@@ -33,7 +33,7 @@ module "frontend" {
   source      = "../modules/frontend"
   subdomain = var.subdomain
   domain = var.domain
-  cloudflare_api_token = var.CLOUDFLARE_API_TOKEN
+  cloudflare_api_token = var.cloudflare_api_token
   account_id = var.account_id
   zone_id = var.zone_id
   increment_api_url = module.backend.api_gateway_increment_views_url
