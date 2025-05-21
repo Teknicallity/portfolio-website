@@ -1,0 +1,80 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::539825459646:role/GitHubTerraformDeploy
+          role-session-name: terraform-deploy-test
+          aws-region: us-east-1
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Apply (test)
+        working-directory: ./terraform/test
+        env:
+          TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+        run: |
+          terraform init
+          terraform apply --var-file test.tfvars -input=false -auto-approve
+
+      - name: Extract Terraform Outputs (test)
+        id: dev-outputs
+        working-directory: ./terraform/test
+        run: |
+          echo "api_invoke_url=$(terraform output -raw api_gateway_base_invoke_url)" >> $GITHUB_OUTPUT
+          echo "public_url=$(terraform output -raw public_url)" >> $GITHUB_OUTPUT
+
+      - name: Run Cypress Tests
+        working-directory: ./tests
+        env:
+          CYPRESS_API_BASE_URL: ${{ steps.dev-outputs.outputs.api_invoke_url }}
+          CYPRESS_SITE_URL: ${{ steps.dev-outputs.outputs.public_url }}
+        run: |
+          npm ci
+          npx cypress run --browser firefox
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::690596055674:role/GitHubTerraformDeploy
+          role-session-name: terraform-deploy-prod
+          aws-region: us-east-1
+
+      - name: Terraform Apply (prod)
+        if: success()  # only run if tests passed
+        working-directory: ./terraform/prod
+        env:
+          TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+        run: |
+          terraform init
+          terraform apply --var-file prod.tfvars -input=false -auto-approve
