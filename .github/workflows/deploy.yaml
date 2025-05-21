@@ -58,6 +58,7 @@ jobs:
         env:
           CYPRESS_API_BASE_URL: ${{ steps.dev-outputs.outputs.api_invoke_url }}
           CYPRESS_SITE_URL: ${{ steps.dev-outputs.outputs.public_url }}
+          TERM: xterm
         run: |
           npm ci
           npx cypress run --browser firefox
