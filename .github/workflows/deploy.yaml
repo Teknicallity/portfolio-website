@@ -49,6 +49,8 @@ jobs:
       - name: Extract Terraform Outputs (test)
         id: dev-outputs
         working-directory: ./terraform/test
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: |
           echo "api_invoke_url=$(terraform output -raw api_gateway_base_invoke_url)" >> $GITHUB_OUTPUT
           echo "public_url=$(terraform output -raw public_url)" >> $GITHUB_OUTPUT
