@@ -40,7 +40,7 @@ jobs:
       - name: Terraform Apply (test)
         working-directory: ./terraform/test
         env:
-          TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: |
           terraform init
@@ -73,7 +73,7 @@ jobs:
         if: success()  # only run if tests passed
         working-directory: ./terraform/prod
         env:
-          TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: |
           terraform init
