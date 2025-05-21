@@ -41,7 +41,7 @@ jobs:
         working-directory: ./terraform/test
         env:
           TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: |
           terraform init
           terraform apply --var-file test.tfvars -input=false -auto-approve
@@ -74,7 +74,7 @@ jobs:
         working-directory: ./terraform/prod
         env:
           TF_VARS_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: |
           terraform init
           terraform apply --var-file prod.tfvars -input=false -auto-approve
