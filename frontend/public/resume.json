@@ -20,8 +20,8 @@
       "company": "Stop and Shop",
       "dates": "February 2020 - Present",
       "bullets": [
-        "Experienced in customer service with a proven track record of efficiently managing customer service operations in a high-volume grocery store environment.",
-        "Skilled in leading a team of associates to ensure exceptional customer satisfaction and effective conflict resolution."
+        "Lead a team of front-end associates in a high-volume grocery environment, ensuring smooth operations and exceptional customer service.",
+        "Resolve customer concerns efficiently, maintaining high satisfaction."
       ]
     },
     {
@@ -29,12 +29,18 @@
       "company": "Target",
       "dates": "September 2021 – April 2022",
       "bullets": [
-        "Managed and fulfilled online pickup orders for Target customers with attention to detail and customer service.",
-        "Consistently met or exceeded productivity and accuracy goals."
+        "Picked and prepared online orders with a focus on speed, accuracy, and customer satisfaction.",
+        "Met and frequently exceeded productivity targets.",
+        "Communicated with team members to ensure timely order fulfillment and issue resolution."
       ]
     }
   ],
   "projects": [
+    {
+      "title": "Cloud-Native Resume (This website)",
+      "github": "https://github.com/Teknicallity/portfolio-website",
+      "description": "Built a secure, serverless, full-stack resume site on AWS with automated infrastructure provisioning using Terraform and CI/CD via GitHub Actions."
+    },
     {
       "title": "Tubarr: Video Archiver",
       "github": "https://github.com/Teknicallity/tubarr",
@@ -64,7 +70,6 @@
         "MySQL",
         "JavaScript",
         "HTML/CSS",
-        "R",
         "Bash"
       ]
     },
@@ -73,7 +78,8 @@
       "skills": [
         "Flask",
         "Django",
-        "Bootstrap"
+        "Bootstrap",
+        "Tailwind"
       ]
     },
     {
@@ -84,18 +90,18 @@
         "VS Code",
         "PyCharm",
         "IntelliJ",
-        "GoLand"
+        "GoLand",
+        "GitHub Actions"
       ]
     },
     {
       "name": "Cloud & Architecture",
       "skills": [
-        "AWS S3",
-        "IAM",
-        "VPC",
-        "CloudWatch",
+        "AWS",
         "Solution Architecture",
-        "High Availability"
+        "Serverless",
+        "High Availability",
+        "CI/CD"
       ]
     }
   ]
