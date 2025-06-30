@@ -14,8 +14,18 @@
       "year": "December 2024"
     },
     {
+      "title": "CompTIA Security+",
+      "url": "https://www.credly.com/badges/cf08c99b-5cb2-4e3c-89f9-fd23fc7f7e7f/public_url",
+      "year": "June 2025"
+    },
+    {
       "title": "CompTIA Network+",
       "url": "https://www.credly.com/badges/986e92c4-aa3b-41b6-9e7f-75270478ed27/public_url",
+      "year": "June 2025"
+    },
+    {
+      "title": "CompTIA A+",
+      "url": "https://www.credly.com/badges/e9032243-1611-40b7-a916-cdf024e32ed7/public_url",
       "year": "June 2025"
     }
   ],
@@ -27,16 +37,6 @@
       "bullets": [
         "Lead a team of front-end associates in a high-volume grocery environment, ensuring smooth operations and exceptional customer service.",
         "Resolve customer concerns efficiently, maintaining high satisfaction."
-      ]
-    },
-    {
-      "title": "Online Pickup Shopper",
-      "company": "Target",
-      "dates": "September 2021 – April 2022",
-      "bullets": [
-        "Picked and prepared online orders with a focus on speed, accuracy, and customer satisfaction.",
-        "Met and frequently exceeded productivity targets.",
-        "Communicated with team members to ensure timely order fulfillment and issue resolution."
       ]
     }
   ],
