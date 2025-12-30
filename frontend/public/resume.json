@@ -31,12 +31,21 @@
   ],
   "experience": [
     {
+      "title": "IT Technician",
+      "company": "Amego Inc.",
+      "dates": "October 2025 – Present",
+      "bullets": [
+        "Provide first-line IT support for end users across multiple locations, troubleshooting hardware, software, and network issues to ensure minimal downtime and reliable day-to-day operations.",
+        "Deploy, configure, and maintain desktops, laptops, mobile devices, and peripherals; manage user accounts and access through Active Directory and mobile device management platforms.",
+        "Document procedures, maintain asset inventory, and assist with system upgrades and IT projects to improve reliability and support efficiency."
+      ]
+    },
+    {
       "title": "Assistant Front End Manager",
       "company": "Stop and Shop",
       "dates": "February 2020 - Present",
       "bullets": [
-        "Lead a team of front-end associates in a high-volume grocery environment, ensuring smooth operations and exceptional customer service.",
-        "Resolve customer concerns efficiently, maintaining high satisfaction."
+        "Managed customer service operations and staff coordination in a high-volume retail environment, emphasizing issue resolution and clear communication."
       ]
     }
   ],
@@ -47,15 +56,8 @@
       "description": "Built a secure, serverless, full-stack resume site on AWS with automated infrastructure provisioning using Terraform and CI/CD via GitHub Actions."
     },
     {
-      "title": "Tubarr: Video Archiver",
-      "github": "https://github.com/Teknicallity/tubarr",
-      "demo": "https://tubarrdemo.cacaw.group/",
-      "description": "A self-hosted Django app that archives YouTube videos and playlists locally with metadata and web-based browsing."
-    },
-    {
-      "title": "LC Mod Utility",
-      "github": "https://github.com/Teknicallity/LC-ModUtility",
-      "description": "A CLI tool for managing Lethal Company mods, allowing users to update mods, unzip mod packs, create new modpacks, and install mods from ThunderStore with ease."
+      "title": "Homelab",
+      "description": "Maintain a self-hosted homelab focused on virtualization, containers, and reliable storage, using Proxmox and Unraid to run multiple virtual machines and Dockerized services. Implement backup and high-availability concepts through ZFS-based storage and offsite TrueNAS backups using automated, incremental replication."
     },
     {
       "title": "Inventory Management System",
@@ -66,47 +68,55 @@
   ],
   "skills": [
     {
-      "name": "Languages",
+      "name": "Operating Systems & Platforms",
+      "skills": [
+        "Windows 11",
+        "Windows Server",
+        "Ubuntu",
+        "Debian",
+        "Fedora",
+        "Proxmox VE",
+        "TrueNAS"
+      ]
+    },
+    {
+      "name": "Systems & Administration",
+      "skills": [
+        "Active Directory",
+        "Microsoft 365",
+        "MDM",
+        "Endpoint Management",
+        "Backup & Recovery"
+      ]
+    },
+    {
+      "name": "Networking & Security",
+      "skills": [
+        "TCP/IP",
+        "DHCP",
+        "DNS",
+        "VLANs",
+        "VPN",
+        "Firewalls",
+        "SSH"
+      ]
+    },
+    {
+      "name": "Cloud & Virtualization",
+      "skills": [
+        "AWS (IAM, VPC, S3, Lambda)",
+        "Terraform",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Scripting & Automation",
       "skills": [
         "Python",
+        "Bash",
+        "PowerShell",
         "Golang",
-        "Java",
-        "SQLite",
-        "MySQL",
-        "JavaScript",
-        "HTML/CSS",
-        "Bash"
-      ]
-    },
-    {
-      "name": "Frameworks",
-      "skills": [
-        "Flask",
-        "Django",
-        "Bootstrap",
-        "Tailwind"
-      ]
-    },
-    {
-      "name": "Developer Tools",
-      "skills": [
-        "Git",
-        "Docker",
-        "VS Code",
-        "PyCharm",
-        "IntelliJ",
-        "GoLand",
-        "GitHub Actions"
-      ]
-    },
-    {
-      "name": "Cloud & Architecture",
-      "skills": [
-        "AWS",
-        "Solution Architecture",
-        "Serverless",
-        "High Availability",
-        "CI/CD"
+        "SQL"
       ]
     }
   ]
